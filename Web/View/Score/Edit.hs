@@ -7,18 +7,18 @@ instance View EditView ViewContext where
     html EditView { .. } = [hsx|
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href={ScoresAction}>Scores</a></li>
+                <li class="breadcrumb-item"><a href={ShowLeaderboardAction (get #leaderboardId score)}>Leaderboard</a></li>
                 <li class="breadcrumb-item active">Edit Score</li>
             </ol>
         </nav>
-        <h1>Edit Score</h1>
+        <h1>Edit {get #name score}'s Score</h1>
         {renderForm score}
     |]
 
 renderForm :: Score -> Html
 renderForm score = formFor score [hsx|
-    {(textField #leaderboardId)}
-    {(textField #name)}
+    {(hiddenField #leaderboardId)}
+    {(hiddenField #name)}
     {(textField #score)}
     {submitButton}
 |]

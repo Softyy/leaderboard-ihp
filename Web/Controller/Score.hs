@@ -34,7 +34,7 @@ instance Controller ScoreController where
                 Right score -> do
                     score <- score |> updateRecord
                     setSuccessMessage "Score updated"
-                    redirectTo EditScoreAction { .. }
+                    redirectTo ShowLeaderboardAction {leaderboardId = get #leaderboardId score}
 
     action CreateScoreAction = do
         let score = newRecord @Score
@@ -53,7 +53,7 @@ instance Controller ScoreController where
         score <- fetch scoreId
         deleteRecord score
         setSuccessMessage "Score deleted"
-        redirectTo ScoresAction
+        redirectTo ShowLeaderboardAction {leaderboardId = get #leaderboardId score}
 
 buildScore score = score
     |> fill @["leaderboardId","name","score"]

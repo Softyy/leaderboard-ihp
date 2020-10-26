@@ -30,8 +30,8 @@ instance View ShowView ViewContext where
     |]
 
 renderScore score = [hsx|<tr>
-    <td> {get #name score} </td>
+    <td> <a href={EditScoreAction (get #id score)}>{get #name score}</a>  </td>
     <td> {get #score score} </td>
     <td></td>
-    <td></td>
+    <td><a href={DeleteScoreAction (get #id score)} class="js-delete text-muted">Delete</a></td>
 </tr>|]
