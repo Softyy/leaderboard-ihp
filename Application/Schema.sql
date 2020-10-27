@@ -10,4 +10,4 @@ CREATE TABLE scores (
     name TEXT DEFAULT 'Anonymous' NOT NULL,
     score INT DEFAULT 0 NOT NULL
 );
-ALTER TABLE scores ADD CONSTRAINT scores_ref_leaderboard_id FOREIGN KEY (leaderboard_id) REFERENCES leaderboards (id) ON DELETE NO ACTION;
+ALTER TABLE scores ADD CONSTRAINT scores_ref_leaderboard_id FOREIGN KEY (leaderboard_id) REFERENCES leaderboards (id) ON DELETE CASCADE;

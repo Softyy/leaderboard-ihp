@@ -14,10 +14,5 @@ SET row_security = off;
 
 SET SESSION AUTHORIZATION DEFAULT;
 
-ALTER TABLE public.scores DISABLE TRIGGER ALL;
-
-
-
-ALTER TABLE public.scores ENABLE TRIGGER ALL;
 
 
